@@ -39,6 +39,46 @@
       "type": "outcome",
       "createdAt": "2022-12-08T22:29:13.800Z",
       "id": 5
+    },
+    {
+      "id": 6,
+      "description": "Desenvolvimento de site",
+      "type": "income",
+      "category": "Venda",
+      "price": 10000,
+      "createdAt": "2022-12-07T17:06:26.795Z"
+    },
+    {
+      "id": 7,
+      "description": "Apartamento",
+      "type": "outcome",
+      "category": "Compra",
+      "price": 5000,
+      "createdAt": "2022-12-08T17:06:02.795Z"
+    },
+    {
+      "id": 8,
+      "description": "Carro",
+      "type": "outcome",
+      "category": "Compra",
+      "price": 2500,
+      "createdAt": "2022-12-18T17:06:02.795Z"
+    },
+    {
+      "description": "Aplicativo",
+      "price": 4500,
+      "category": "Venda",
+      "type": "income",
+      "createdAt": "2022-12-08T22:03:18.767Z",
+      "id": 9
+    },
+    {
+      "description": "Hamburguer",
+      "price": 3500,
+      "category": "Alimentação",
+      "type": "outcome",
+      "createdAt": "2022-12-08T22:29:13.800Z",
+      "id": 10
     }
   ]
 }
