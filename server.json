@@ -79,6 +79,14 @@
       "type": "outcome",
       "createdAt": "2022-12-08T22:29:13.800Z",
       "id": 10
+    },
+    {
+      "description": "Pão",
+      "price": 3,
+      "category": "Alimentação",
+      "type": "outcome",
+      "createdAt": "2022-12-10T16:07:59.622Z",
+      "id": 11
     }
   ]
 }
