@@ -32,12 +32,31 @@ export function Paginate() {
     setCurrentPage(data.page)
   }
 
+  function decreasePages() {
+    const newPage = Number(currentPage) === totalPages ? Number(currentPage) - 2 : Number(currentPage) - 1
+
+    if (newPage > maxSide) {
+      setCurrentPage(String(newPage))
+    }
+  }
+
+  function increasePages() {
+    const newPage = Math.max(Number(currentPage) + 1, 3)
+
+    if (newPage < totalPages) {
+      setCurrentPage(String(newPage))
+    }
+  }
+
   const maxItens = 3
   const maxSide = (maxItens - 1) / 2
 
   const totalPages = Math.ceil(totalTransactions.length / 10)
   const firstPage = Math.max(Number(currentPage) - maxSide, 1)
   const finalPage = Number(currentPage) === totalPages ? firstPage - 1 : firstPage
+
+  const increaseButtonDisabled = Number(currentPage) === totalPages - 1
+  const decreaseButtonDisabled = Number(currentPage) <= maxSide + 1
 
   return (
     <form onSubmit={handleSubmit(handleChangePage)} >
@@ -57,7 +76,11 @@ export function Paginate() {
                 </PaginateButton>
               </li>
               <li>
-                <MoreLessButton>
+                <MoreLessButton
+                  type="button"
+                  onClick={() => decreasePages()}
+                  disabled={decreaseButtonDisabled}
+                >
                   <CaretLeft size={32} />
                 </MoreLessButton>
               </li>
@@ -75,7 +98,11 @@ export function Paginate() {
                   })
               }
               <li>
-                <MoreLessButton >
+                <MoreLessButton
+                  type="button"
+                  onClick={() => increasePages()}
+                  disabled={increaseButtonDisabled}
+                >
                   <CaretRight size={32} />
                 </MoreLessButton>
               </li>

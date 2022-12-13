@@ -60,11 +60,11 @@ display: flex;
 align-items: center;
 
 &:disabled {
-    opacity: 0.6;
+    opacity: 0.5;
     cursor: not-allowed;
   }
 
-&:hover {
+&:not(:disabled):hover {
   transition: background-color 0.2s;
   background: ${(props) => props.theme['gray-600']};
 }

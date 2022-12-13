@@ -37,8 +37,8 @@ interface TransactionContextType {
 export const TransactionsContext = createContext({} as TransactionContextType)
 
 export function TransactionsProvider({ children }: TransactionsProviderProps) {
-  const [transactions, setTransactions] = useState<Transaction[]>([])
   const [loading, setLoading] = useState(false)
+  const [transactions, setTransactions] = useState<Transaction[]>([])
   const [totalTransactions, setTotalTransactions] = useState<Transaction[]>([])
 
   async function fetchTransactions(filters?: Filters) {
@@ -68,8 +68,8 @@ export function TransactionsProvider({ children }: TransactionsProviderProps) {
   }
 
   useEffect(() => {
-    fetchTotalTransactions()
     fetchTransactions()
+    fetchTotalTransactions()
   }, [])
 
   const createTransaction = useCallback(async (data: CreateTransactionInput) => {
@@ -83,8 +83,8 @@ export function TransactionsProvider({ children }: TransactionsProviderProps) {
       createdAt: new Date(),
     })
 
-    setTotalTransactions((state) => [response.data, ...state])
     setTransactions((state) => [response.data, ...state])
+    fetchTotalTransactions()
   }, [])
 
   return (
