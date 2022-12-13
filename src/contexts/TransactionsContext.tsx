@@ -27,7 +27,9 @@ interface Filters {
 }
 
 interface TransactionContextType {
+  loading: boolean;
   transactions: Transaction[]
+  totalTransactions: Transaction[]
   fetchTransactions: (filters?: Filters) => Promise<void>
   createTransaction: (data: CreateTransactionInput) => Promise<void>
 }
@@ -36,8 +38,11 @@ export const TransactionsContext = createContext({} as TransactionContextType)
 
 export function TransactionsProvider({ children }: TransactionsProviderProps) {
   const [transactions, setTransactions] = useState<Transaction[]>([])
+  const [loading, setLoading] = useState(false)
+  const [totalTransactions, setTotalTransactions] = useState<Transaction[]>([])
 
   async function fetchTransactions(filters?: Filters) {
+    setLoading(true)
     const response = await api.get('/transactions', {
       params: {
         _sort: 'createdAt',
@@ -48,9 +53,22 @@ export function TransactionsProvider({ children }: TransactionsProviderProps) {
     })
 
     setTransactions(response.data)
+    setLoading(false)
+  }
+
+  async function fetchTotalTransactions() {
+    const response = await api.get('/transactions', {
+      params: {
+        _sort: 'createdAt',
+        _order: 'desc',
+      },
+    })
+
+    setTotalTransactions(response.data)
   }
 
   useEffect(() => {
+    fetchTotalTransactions()
     fetchTransactions()
   }, [])
 
@@ -65,13 +83,16 @@ export function TransactionsProvider({ children }: TransactionsProviderProps) {
       createdAt: new Date(),
     })
 
+    setTotalTransactions((state) => [response.data, ...state])
     setTransactions((state) => [response.data, ...state])
   }, [])
 
   return (
     <TransactionsContext.Provider
       value={{
+        loading,
         transactions,
+        totalTransactions,
         fetchTransactions,
         createTransaction,
       }}

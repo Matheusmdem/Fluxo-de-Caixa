@@ -22,7 +22,7 @@
       "type": "outcome",
       "category": "Compra",
       "price": 2500,
-      "createdAt": "2022-12-18T17:06:02.795Z"
+      "createdAt": "2022-11-18T17:06:02.795Z"
     },
     {
       "description": "Aplicativo",
@@ -62,7 +62,7 @@
       "type": "outcome",
       "category": "Compra",
       "price": 2500,
-      "createdAt": "2022-12-18T17:06:02.795Z"
+      "createdAt": "2022-11-18T17:06:02.795Z"
     },
     {
       "description": "Aplicativo",
@@ -87,6 +87,230 @@
       "type": "outcome",
       "createdAt": "2022-12-10T16:07:59.622Z",
       "id": 11
+    },
+    {
+      "description": "Aplicativo",
+      "price": 4500,
+      "category": "Venda",
+      "type": "income",
+      "createdAt": "2022-12-08T22:03:18.767Z",
+      "id": 12
+    },
+    {
+      "id": 13,
+      "description": "Desenvolvimento de site",
+      "type": "income",
+      "category": "Venda",
+      "price": 10000,
+      "createdAt": "2022-12-07T17:06:26.795Z"
+    },
+    {
+      "id": 14,
+      "description": "Apartamento",
+      "type": "outcome",
+      "category": "Compra",
+      "price": 5000,
+      "createdAt": "2022-12-08T17:06:02.795Z"
+    },
+    {
+      "id": 15,
+      "description": "Carro",
+      "type": "outcome",
+      "category": "Compra",
+      "price": 2500,
+      "createdAt": "2022-11-18T17:06:02.795Z"
+    },
+    {
+      "description": "Aplicativo",
+      "price": 4500,
+      "category": "Venda",
+      "type": "income",
+      "createdAt": "2022-12-08T22:03:18.767Z",
+      "id": 16
+    },
+    {
+      "description": "Hamburguer",
+      "price": 3500,
+      "category": "Alimentação",
+      "type": "outcome",
+      "createdAt": "2022-12-08T22:29:13.800Z",
+      "id": 17
+    },
+    {
+      "id": 18,
+      "description": "Desenvolvimento de site",
+      "type": "income",
+      "category": "Venda",
+      "price": 10000,
+      "createdAt": "2022-12-07T17:06:26.795Z"
+    },
+    {
+      "id": 19,
+      "description": "Apartamento",
+      "type": "outcome",
+      "category": "Compra",
+      "price": 5000,
+      "createdAt": "2022-12-08T17:06:02.795Z"
+    },
+    {
+      "id": 20,
+      "description": "Carro",
+      "type": "outcome",
+      "category": "Compra",
+      "price": 2500,
+      "createdAt": "2022-11-18T17:06:02.795Z"
+    },
+    {
+      "description": "Aplicativo",
+      "price": 4500,
+      "category": "Venda",
+      "type": "income",
+      "createdAt": "2022-12-08T22:03:18.767Z",
+      "id": 21
+    },
+    {
+      "description": "Hamburguer",
+      "price": 3500,
+      "category": "Alimentação",
+      "type": "outcome",
+      "createdAt": "2022-12-08T22:29:13.800Z",
+      "id": 22
+    },
+    {
+      "description": "Pão",
+      "price": 3,
+      "category": "Alimentação",
+      "type": "outcome",
+      "createdAt": "2022-12-10T16:07:59.622Z",
+      "id": 23
+    },
+    {
+      "description": "Aplicativo",
+      "price": 4500,
+      "category": "Venda",
+      "type": "income",
+      "createdAt": "2022-12-08T22:03:18.767Z",
+      "id": 24
+    },
+    {
+      "id": 25,
+      "description": "Carro",
+      "type": "outcome",
+      "category": "Compra",
+      "price": 2500,
+      "createdAt": "2022-11-18T17:06:02.795Z"
+    },
+    {
+      "description": "Aplicativo",
+      "price": 4500,
+      "category": "Venda",
+      "type": "income",
+      "createdAt": "2022-12-08T22:03:18.767Z",
+      "id": 26
+    },
+    {
+      "description": "Hamburguer",
+      "price": 3500,
+      "category": "Alimentação",
+      "type": "outcome",
+      "createdAt": "2022-12-08T22:29:13.800Z",
+      "id": 27
+    },
+    {
+      "id": 28,
+      "description": "Desenvolvimento de site",
+      "type": "income",
+      "category": "Venda",
+      "price": 10000,
+      "createdAt": "2022-12-07T17:06:26.795Z"
+    },
+    {
+      "id": 29,
+      "description": "Apartamento",
+      "type": "outcome",
+      "category": "Compra",
+      "price": 5000,
+      "createdAt": "2022-12-08T17:06:02.795Z"
+    },
+    {
+      "id": 30,
+      "description": "Carro",
+      "type": "outcome",
+      "category": "Compra",
+      "price": 2500,
+      "createdAt": "2022-11-18T17:06:02.795Z"
+    },
+    {
+      "description": "Aplicativo",
+      "price": 4500,
+      "category": "Venda",
+      "type": "income",
+      "createdAt": "2022-12-08T22:03:18.767Z",
+      "id": 31
+    },
+    {
+      "description": "Hamburguer",
+      "price": 3500,
+      "category": "Alimentação",
+      "type": "outcome",
+      "createdAt": "2022-12-08T22:29:13.800Z",
+      "id": 32
+    },
+    {
+      "description": "Pão",
+      "price": 3,
+      "category": "Alimentação",
+      "type": "outcome",
+      "createdAt": "2022-12-10T16:07:59.622Z",
+      "id": 33
+    },
+    {
+      "description": "Aplicativo",
+      "price": 4500,
+      "category": "Venda",
+      "type": "income",
+      "createdAt": "2022-12-08T22:03:18.767Z",
+      "id": 34
+    },
+    {
+      "description": "carro",
+      "price": 2500,
+      "category": "compra",
+      "type": "outcome",
+      "createdAt": "2022-12-12T21:57:03.160Z",
+      "id": 35
+    },
+    {
+      "description": "laranja",
+      "price": 4,
+      "category": "alimentação",
+      "type": "income",
+      "createdAt": "2022-12-12T21:58:12.063Z",
+      "id": 36
+    },
+    {
+      "description": "moto",
+      "price": 5000,
+      "category": "venda",
+      "type": "income",
+      "createdAt": "2022-12-12T23:13:55.701Z",
+      "id": 37
+    },
+    {
+      "description": "site",
+      "price": 5000,
+      "category": "venda",
+      "type": "income",
+      "createdAt": "2022-12-12T23:15:53.040Z",
+      "id": 38
+    },
+    {
+      "description": "arroz",
+      "price": 5454,
+      "category": "efe",
+      "type": "outcome",
+      "createdAt": "2022-12-13T00:09:12.974Z",
+      "id": 39
     }
   ]
 }
