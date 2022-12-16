@@ -32,6 +32,7 @@ interface TransactionContextType {
   totalTransactions: Transaction[]
   fetchTransactions: (filters?: Filters) => Promise<void>
   createTransaction: (data: CreateTransactionInput) => Promise<void>
+  deleteTransaction: (id: number) => Promise<void>
 }
 
 export const TransactionsContext = createContext({} as TransactionContextType)
@@ -87,6 +88,21 @@ export function TransactionsProvider({ children }: TransactionsProviderProps) {
     fetchTotalTransactions()
   }, [])
 
+  async function deleteTransaction(id: number) {
+    setLoading(true)
+
+    const deletedTransaction = transactions.filter(transaction => {
+      return transaction.id !== id
+    })
+    console.log(deletedTransaction)
+    await api.delete(`/transactions/${id}`)
+
+    setTransactions(deletedTransaction)
+    fetchTotalTransactions()
+
+    setLoading(false)
+  }
+
   return (
     <TransactionsContext.Provider
       value={{
@@ -95,6 +111,7 @@ export function TransactionsProvider({ children }: TransactionsProviderProps) {
         totalTransactions,
         fetchTransactions,
         createTransaction,
+        deleteTransaction
       }}
     >
       {children}

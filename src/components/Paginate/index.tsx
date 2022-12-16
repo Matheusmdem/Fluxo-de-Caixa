@@ -53,10 +53,10 @@ export function Paginate() {
 
   const totalPages = Math.ceil(totalTransactions.length / 10)
   const firstPage = Math.max(Number(currentPage) - maxSide, 1)
-  const finalPage = Number(currentPage) === totalPages ? firstPage - 1 : firstPage
+  const finalPage = Math.max(Number(currentPage) === totalPages ? firstPage - 1 : firstPage, 1)
 
-  const increaseButtonDisabled = Number(currentPage) === totalPages - 1
-  const decreaseButtonDisabled = Number(currentPage) <= maxSide + 1
+  const increaseButtonDisabled = totalPages <= 3 || Number(currentPage) >= totalPages - 1
+  const decreaseButtonDisabled = totalPages <= 3 || Number(currentPage) <= maxSide + 1
 
   return (
     <form onSubmit={handleSubmit(handleChangePage)} >
