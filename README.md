@@ -1,6 +1,6 @@
 MM-Bank
 
-Para utilizar faça o git clone, execute os comandos <yarn dev> e <yarn dev:server>
+Para utilizar faça o git clone, execute os comandos |yarn dev| e |yarn dev:server|
 
 Funcionalidades:
 
