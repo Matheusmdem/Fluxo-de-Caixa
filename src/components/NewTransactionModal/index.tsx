@@ -27,12 +27,10 @@ type NewTransationFormInputs = zod.infer<typeof newTransactionFormSchema>
 
 interface EditTransaction {
   onEditTransaction?: Transaction
-  onChange?: (isSubmitting: boolean) => void
 }
 
 export function NewTransactionModal({
   onEditTransaction,
-  onChange,
 }: EditTransaction) {
   const { createTransaction, editTransaction } = useContext(TransactionsContext)
 
@@ -64,7 +62,6 @@ export function NewTransactionModal({
   async function handleEditTransaction(data: NewTransationFormInputs) {
     if (onEditTransaction?.id) {
       await editTransaction(data, onEditTransaction?.id)
-      onChange?.(isSubmitting)
     }
   }
 
@@ -74,7 +71,10 @@ export function NewTransactionModal({
     <Dialog.Portal>
       <Overlay />
       <Content>
-        <Dialog.Title>Nova Transação</Dialog.Title>
+        {haveAnId ?
+          <Dialog.Title>Atualizar Transação</Dialog.Title>
+          : <Dialog.Title>Nova Transação</Dialog.Title>
+        }
         <Dialog.Close asChild>
           <CloseButton>
             <X />
@@ -90,7 +90,7 @@ export function NewTransactionModal({
           <input
             type="text"
             placeholder="Descrição"
-            defaultValue={onEditTransaction?.description}
+            value={onEditTransaction?.description}
             required
             {...register('description')}
           />

@@ -20,11 +20,7 @@ import { dateFormatter, priceFormatter } from '../../utils/formatter'
 export function Transactions() {
   const { transactions, loading } = useContext(TransactionsContext)
 
-  const [open, setOpen] = useState(false)
 
-  function handleCloseModal(isSubmitting: boolean) {
-    setOpen(isSubmitting)
-  }
 
   return (
     <div>
@@ -57,7 +53,7 @@ export function Transactions() {
                   </AlertDialog.Root>
                 </td>
                 <td>
-                  <Dialog.Root open={open} onOpenChange={setOpen}>
+                  <Dialog.Root >
                     <Dialog.Trigger asChild>
                       <DeleteEditButton variant="edit">
                         <Pencil size={20} />
@@ -65,7 +61,6 @@ export function Transactions() {
                     </Dialog.Trigger>
                     <NewTransactionModal
                       onEditTransaction={transaction}
-                      onChange={handleCloseModal}
                     />
                   </Dialog.Root>
                 </td>

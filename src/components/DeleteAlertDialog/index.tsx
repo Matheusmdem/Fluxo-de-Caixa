@@ -20,7 +20,7 @@ export function DeleteAlertDialog({ onDelete }: DeleteTransaction) {
       <Content>
         <AlertDialog.Title>Você tem certeza?</AlertDialog.Title>
         <Description>
-          Essa ação não pode ser defeita. Isso irá deletar permanentemente seu
+          Essa ação não poderá ser desfeita. Isso irá deletar permanentemente seu
           dado do banco!
         </Description>
         <div className="actionButtons">
