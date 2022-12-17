@@ -10,7 +10,10 @@ import {
 import * as zod from 'zod'
 import { Controller, useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { Transaction, TransactionsContext } from '../../contexts/TransactionsContext'
+import {
+  Transaction,
+  TransactionsContext,
+} from '../../contexts/TransactionsContext'
 import { useContext } from 'react'
 
 const newTransactionFormSchema = zod.object({
@@ -24,9 +27,13 @@ type NewTransationFormInputs = zod.infer<typeof newTransactionFormSchema>
 
 interface EditTransaction {
   onEditTransaction?: Transaction
+  onChange?: (isSubmitting: boolean) => void
 }
 
-export function NewTransactionModal({ onEditTransaction }: EditTransaction) {
+export function NewTransactionModal({
+  onEditTransaction,
+  onChange,
+}: EditTransaction) {
   const { createTransaction, editTransaction } = useContext(TransactionsContext)
 
   const {
@@ -57,6 +64,7 @@ export function NewTransactionModal({ onEditTransaction }: EditTransaction) {
   async function handleEditTransaction(data: NewTransationFormInputs) {
     if (onEditTransaction?.id) {
       await editTransaction(data, onEditTransaction?.id)
+      onChange?.(isSubmitting)
     }
   }
 
@@ -72,7 +80,13 @@ export function NewTransactionModal({ onEditTransaction }: EditTransaction) {
             <X />
           </CloseButton>
         </Dialog.Close>
-        <form onSubmit={haveAnId ? handleSubmit(handleEditTransaction) : handleSubmit(handleCreateNewTransaction)}>
+        <form
+          onSubmit={
+            haveAnId
+              ? handleSubmit(handleEditTransaction)
+              : handleSubmit(handleCreateNewTransaction)
+          }
+        >
           <input
             type="text"
             placeholder="Descrição"

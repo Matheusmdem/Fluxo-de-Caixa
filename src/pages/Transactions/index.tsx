@@ -1,11 +1,11 @@
 import { Pencil, Trash } from 'phosphor-react'
-import { useContext } from 'react'
+import { useContext, useState } from 'react'
 import { Header } from '../../components/Header'
 import { Paginate } from '../../components/Paginate'
 import { SearchForm } from '../../components/SearchForm'
 import { Summary } from '../../components/Summary'
 import { TransactionsContext } from '../../contexts/TransactionsContext'
-import * as AlertDialog from '@radix-ui/react-alert-dialog';
+import * as AlertDialog from '@radix-ui/react-alert-dialog'
 import * as Dialog from '@radix-ui/react-dialog'
 import {
   DeleteEditButton,
@@ -17,10 +17,14 @@ import { DeleteAlertDialog } from '../../components/DeleteAlertDialog'
 import { NewTransactionModal } from '../../components/NewTransactionModal'
 import { dateFormatter, priceFormatter } from '../../utils/formatter'
 
-
-
 export function Transactions() {
   const { transactions, loading } = useContext(TransactionsContext)
+
+  const [open, setOpen] = useState(false)
+
+  function handleCloseModal(isSubmitting: boolean) {
+    setOpen(isSubmitting)
+  }
 
   return (
     <div>
@@ -41,31 +45,27 @@ export function Transactions() {
                   </PriceHighLight>
                 </td>
                 <td>{transaction.category}</td>
-                {/* <td>{dateFormatter.format(new Date(transaction.createdAt))}</td> */}
+                <td>{dateFormatter.format(new Date(transaction.createdAt))}</td>
                 <td>
                   <AlertDialog.Root>
-                    <AlertDialog.Trigger
-                      asChild
-                      disabled={loading}
-                    >
-                      <DeleteEditButton variant='delete'>
+                    <AlertDialog.Trigger asChild disabled={loading}>
+                      <DeleteEditButton variant="delete">
                         <Trash size={20} />
                       </DeleteEditButton>
                     </AlertDialog.Trigger>
-                    <DeleteAlertDialog
-                      onDelete={transaction.id}
-                    />
+                    <DeleteAlertDialog onDelete={transaction.id} />
                   </AlertDialog.Root>
                 </td>
                 <td>
-                  <Dialog.Root>
+                  <Dialog.Root open={open} onOpenChange={setOpen}>
                     <Dialog.Trigger asChild>
-                      <DeleteEditButton variant='edit'>
+                      <DeleteEditButton variant="edit">
                         <Pencil size={20} />
                       </DeleteEditButton>
                     </Dialog.Trigger>
                     <NewTransactionModal
                       onEditTransaction={transaction}
+                      onChange={handleCloseModal}
                     />
                   </Dialog.Root>
                 </td>

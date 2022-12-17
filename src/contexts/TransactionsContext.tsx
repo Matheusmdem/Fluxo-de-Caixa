@@ -1,4 +1,10 @@
-import { createContext, ReactNode, useCallback, useEffect, useState } from 'react'
+import {
+  createContext,
+  ReactNode,
+  useCallback,
+  useEffect,
+  useState,
+} from 'react'
 import { api } from '../lib/axios'
 
 interface TransactionsProviderProps {
@@ -21,17 +27,13 @@ interface CreateTransactionInput {
   type: 'income' | 'outcome'
 }
 
-interface EditTransactionInput {
-  id: number;
-}
-
 interface Filters {
-  query?: string;
-  page?: string;
+  query?: string
+  page?: string
 }
 
 interface TransactionContextType {
-  loading: boolean;
+  loading: boolean
   transactions: Transaction[]
   totalTransactions: Transaction[]
   fetchTransactions: (filters?: Filters) => Promise<void>
@@ -73,20 +75,23 @@ export function TransactionsProvider({ children }: TransactionsProviderProps) {
     fetchTotalTransactions()
   }, [])
 
-  const createTransaction = useCallback(async (data: CreateTransactionInput) => {
-    const { category, description, price, type } = data
+  const createTransaction = useCallback(
+    async (data: CreateTransactionInput) => {
+      const { category, description, price, type } = data
 
-    const response = await api.post('/transactions', {
-      description,
-      price,
-      category,
-      type,
-      createdAt: new Date(),
-    })
+      const response = await api.post('/transactions', {
+        description,
+        price,
+        category,
+        type,
+        createdAt: new Date(),
+      })
 
-    setTransactions((state) => [response.data, ...state])
-    fetchTotalTransactions()
-  }, [])
+      setTransactions((state) => [response.data, ...state])
+      fetchTotalTransactions()
+    },
+    [],
+  )
 
   async function editTransaction(data: CreateTransactionInput, id: number) {
     const { category, description, price, type } = data
@@ -96,6 +101,7 @@ export function TransactionsProvider({ children }: TransactionsProviderProps) {
       price,
       category,
       type,
+      createdAt: new Date(),
     })
 
     const copyTransaction = [...transactions]
@@ -106,6 +112,7 @@ export function TransactionsProvider({ children }: TransactionsProviderProps) {
       copyTransaction[transactionIndex].description = data.description
       copyTransaction[transactionIndex].price = data.price
       copyTransaction[transactionIndex].type = data.type
+      copyTransaction[transactionIndex].createdAt = String(new Date())
     }
 
     setTransactions(copyTransaction)
@@ -113,11 +120,11 @@ export function TransactionsProvider({ children }: TransactionsProviderProps) {
 
   async function deleteTransaction(id: number) {
     setLoading(true)
+    await api.delete(`/transactions/${id}`)
 
-    const deletedTransaction = transactions.filter(transaction => {
+    const deletedTransaction = transactions.filter((transaction) => {
       return transaction.id !== id
     })
-    await api.delete(`/transactions/${id}`)
 
     setTransactions(deletedTransaction)
     fetchTotalTransactions()
@@ -133,7 +140,7 @@ export function TransactionsProvider({ children }: TransactionsProviderProps) {
         fetchTransactions,
         createTransaction,
         editTransaction,
-        deleteTransaction
+        deleteTransaction,
       }}
     >
       {children}

@@ -1,42 +1,28 @@
 {
   "transactions": [
     {
-      "id": 28,
-      "description": "Desenvolvimento de site",
-      "type": "income",
-      "category": "Venda",
-      "price": 10000,
-      "createdAt": "2022-12-07T17:06:26.795Z"
-    },
-    {
       "description": "Hamburguer",
-      "price": 3500,
+      "price": 300,
       "category": "Alimentação",
       "type": "outcome",
-      "createdAt": "2022-12-08T22:29:13.800Z",
+      "createdAt": "2022-12-17T16:13:29.943Z",
       "id": 32
     },
     {
       "description": "Aplicativo",
-      "price": 4500,
+      "price": 45,
       "category": "Venda",
       "type": "income",
-      "createdAt": "2022-12-08T22:03:18.767Z",
+      "createdAt": "2022-12-17T15:49:33.162Z",
       "id": 41
     },
     {
-      "description": "Moto",
-      "price": 1100,
-      "category": "Compra",
-      "type": "outcome",
-      "id": 46
-    },
-    {
-      "description": "Arroz",
-      "price": 150,
-      "category": "Alimentação",
+      "description": "Testando",
+      "price": 250,
+      "category": "Teste",
       "type": "income",
-      "id": 47
+      "createdAt": "2022-12-17T16:07:17.034Z",
+      "id": 42
     }
   ]
 }

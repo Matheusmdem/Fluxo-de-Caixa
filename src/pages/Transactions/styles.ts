@@ -1,4 +1,3 @@
-import * as RadioGroup from '@radix-ui/react-radio-group'
 import styled from 'styled-components'
 
 export const TransactionsContainer = styled.main`
@@ -19,7 +18,7 @@ export const TransactionsTable = styled.table`
     background: ${(props) => props.theme['gray-700']};
 
     &:first-child {
-      width: 45%;
+      width: 40%;
       border-top-left-radius: 6px;
       border-bottom-left-radius: 6px;
     }
@@ -62,8 +61,9 @@ export const DeleteEditButton = styled.button<DeleteEditButtonProps>`
 
   &:not(:disabled):hover {
     transition: background-color 0.2s;
-    color: ${(props) => props.variant === 'delete'
-    ? props.theme['red-300']
-    : props.theme['green-300']};
+    color: ${(props) =>
+      props.variant === 'delete'
+        ? props.theme['red-300']
+        : props.theme['green-300']};
   }
 `

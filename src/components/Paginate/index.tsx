@@ -1,30 +1,27 @@
-import { useContext, useState } from "react"
-import { TransactionsContext } from "../../contexts/TransactionsContext"
-import { MoreLessButton, PaginateButton, PaginateRoot } from "./styles"
+import { useContext, useState } from 'react'
+import { TransactionsContext } from '../../contexts/TransactionsContext'
+import { MoreLessButton, PaginateButton, PaginateRoot } from './styles'
 import * as zod from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { Controller, useForm } from "react-hook-form"
-import { CaretLeft, CaretRight, Terminal } from "phosphor-react"
-
+import { Controller, useForm } from 'react-hook-form'
+import { CaretLeft, CaretRight } from 'phosphor-react'
 
 const pageFormSchema = zod.object({
-  page: zod.string()
+  page: zod.string(),
 })
 
 type pageFormInputs = zod.infer<typeof pageFormSchema>
 
 export function Paginate() {
-  const { totalTransactions, fetchTransactions, loading } = useContext(TransactionsContext)
+  const { totalTransactions, fetchTransactions, loading } =
+    useContext(TransactionsContext)
   const [currentPage, setCurrentPage] = useState('')
 
-  const {
-    control,
-    handleSubmit,
-  } = useForm<pageFormInputs>({
+  const { control, handleSubmit } = useForm<pageFormInputs>({
     resolver: zodResolver(pageFormSchema),
     defaultValues: {
-      page: ""
-    }
+      page: '',
+    },
   })
 
   function handleChangePage(data: pageFormInputs) {
@@ -33,7 +30,10 @@ export function Paginate() {
   }
 
   function decreasePages() {
-    const newPage = Number(currentPage) === totalPages ? Number(currentPage) - 2 : Number(currentPage) - 1
+    const newPage =
+      Number(currentPage) === totalPages
+        ? Number(currentPage) - 2
+        : Number(currentPage) - 1
 
     if (newPage > maxSide) {
       setCurrentPage(String(newPage))
@@ -53,13 +53,18 @@ export function Paginate() {
 
   const totalPages = Math.ceil(totalTransactions.length / 10)
   const firstPage = Math.max(Number(currentPage) - maxSide, 1)
-  const finalPage = Math.max(Number(currentPage) === totalPages ? firstPage - 1 : firstPage, 1)
+  const finalPage = Math.max(
+    Number(currentPage) === totalPages ? firstPage - 1 : firstPage,
+    1,
+  )
 
-  const increaseButtonDisabled = totalPages <= 3 || Number(currentPage) >= totalPages - 1
-  const decreaseButtonDisabled = totalPages <= 3 || Number(currentPage) <= maxSide + 1
+  const increaseButtonDisabled =
+    totalPages <= 3 || Number(currentPage) >= totalPages - 1
+  const decreaseButtonDisabled =
+    totalPages <= 3 || Number(currentPage) <= maxSide + 1
 
   return (
-    <form onSubmit={handleSubmit(handleChangePage)} >
+    <form onSubmit={handleSubmit(handleChangePage)}>
       <Controller
         control={control}
         name="page"
@@ -71,7 +76,7 @@ export function Paginate() {
           >
             <ul>
               <li>
-                <PaginateButton value='' type='submit'>
+                <PaginateButton value="" type="submit">
                   All
                 </PaginateButton>
               </li>
@@ -84,19 +89,17 @@ export function Paginate() {
                   <CaretLeft size={32} />
                 </MoreLessButton>
               </li>
-              {
-                Array.from({ length: Math.min(maxItens, totalPages) })
-                  .map((_, index) => index + finalPage)
-                  .map((page) => {
-                    return (
-                      <li key={page} >
-                        <PaginateButton value={String(page)} type='submit'>
-                          {page}
-                        </PaginateButton>
-                      </li>
-                    )
-                  })
-              }
+              {Array.from({ length: Math.min(maxItens, totalPages) })
+                .map((_, index) => index + finalPage)
+                .map((page) => {
+                  return (
+                    <li key={page}>
+                      <PaginateButton value={String(page)} type="submit">
+                        {page}
+                      </PaginateButton>
+                    </li>
+                  )
+                })}
               <li>
                 <MoreLessButton
                   type="button"
