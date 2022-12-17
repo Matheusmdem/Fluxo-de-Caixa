@@ -10,7 +10,7 @@ import {
 import * as zod from 'zod'
 import { Controller, useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { TransactionsContext } from '../../contexts/TransactionsContext'
+import { Transaction, TransactionsContext } from '../../contexts/TransactionsContext'
 import { useContext } from 'react'
 
 const newTransactionFormSchema = zod.object({
@@ -22,8 +22,12 @@ const newTransactionFormSchema = zod.object({
 
 type NewTransationFormInputs = zod.infer<typeof newTransactionFormSchema>
 
-export function NewTransactionModal() {
-  const { createTransaction } = useContext(TransactionsContext)
+interface EditTransaction {
+  onEditTransaction?: Transaction
+}
+
+export function NewTransactionModal({ onEditTransaction }: EditTransaction) {
+  const { createTransaction, editTransaction } = useContext(TransactionsContext)
 
   const {
     control,
@@ -47,9 +51,16 @@ export function NewTransactionModal() {
       category,
       type,
     })
-
     reset()
   }
+
+  async function handleEditTransaction(data: NewTransationFormInputs) {
+    if (onEditTransaction?.id) {
+      await editTransaction(data, onEditTransaction?.id)
+    }
+  }
+
+  const haveAnId = onEditTransaction?.id
 
   return (
     <Dialog.Portal>
@@ -61,22 +72,25 @@ export function NewTransactionModal() {
             <X />
           </CloseButton>
         </Dialog.Close>
-        <form onSubmit={handleSubmit(handleCreateNewTransaction)}>
+        <form onSubmit={haveAnId ? handleSubmit(handleEditTransaction) : handleSubmit(handleCreateNewTransaction)}>
           <input
             type="text"
             placeholder="Descrição"
+            defaultValue={onEditTransaction?.description}
             required
             {...register('description')}
           />
           <input
             type="number"
             placeholder="Preço"
+            defaultValue={onEditTransaction?.price}
             required
             {...register('price', { valueAsNumber: true })}
           />
           <input
             type="text"
             placeholder="Categoria"
+            defaultValue={onEditTransaction?.category}
             required
             {...register('category')}
           />
@@ -87,7 +101,7 @@ export function NewTransactionModal() {
             render={({ field }) => (
               <TransactionType
                 onValueChange={field.onChange}
-                value={field.value}
+                defaultValue={onEditTransaction?.type ?? field.value}
               >
                 <TransactionTypeButton variant="income" value="income">
                   <ArrowCircleUp size={24} />
@@ -100,10 +114,15 @@ export function NewTransactionModal() {
               </TransactionType>
             )}
           />
-
-          <button type="submit" disabled={isSubmitting}>
-            Cadastrar
-          </button>
+          {haveAnId ? (
+            <button type="submit" disabled={isSubmitting}>
+              Atualizar
+            </button>
+          ) : (
+            <button type="submit" disabled={isSubmitting}>
+              Cadastrar
+            </button>
+          )}
         </form>
       </Content>
     </Dialog.Portal>

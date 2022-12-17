@@ -19,7 +19,7 @@ export const TransactionsTable = styled.table`
     background: ${(props) => props.theme['gray-700']};
 
     &:first-child {
-      width: 40%;
+      width: 45%;
       border-top-left-radius: 6px;
       border-bottom-left-radius: 6px;
     }
@@ -41,7 +41,12 @@ export const PriceHighLight = styled.span<PriceHighLightProps>`
       ? props.theme['green-300']
       : props.theme['red-300']};
 `
-export const DeleteButton = styled.button`
+
+interface DeleteEditButtonProps {
+  variant: 'delete' | 'edit'
+}
+
+export const DeleteEditButton = styled.button<DeleteEditButtonProps>`
   background: transparent;
   border-radius: 6px;
   cursor: pointer;
@@ -57,6 +62,8 @@ export const DeleteButton = styled.button`
 
   &:not(:disabled):hover {
     transition: background-color 0.2s;
-    color: ${(props) => props.theme['red-500']};
+    color: ${(props) => props.variant === 'delete'
+    ? props.theme['red-300']
+    : props.theme['green-300']};
   }
 `

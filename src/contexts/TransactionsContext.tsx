@@ -5,7 +5,7 @@ interface TransactionsProviderProps {
   children: ReactNode
 }
 
-interface Transaction {
+export interface Transaction {
   id: number
   description: string
   type: 'income' | 'outcome'
@@ -21,6 +21,10 @@ interface CreateTransactionInput {
   type: 'income' | 'outcome'
 }
 
+interface EditTransactionInput {
+  id: number;
+}
+
 interface Filters {
   query?: string;
   page?: string;
@@ -33,6 +37,7 @@ interface TransactionContextType {
   fetchTransactions: (filters?: Filters) => Promise<void>
   createTransaction: (data: CreateTransactionInput) => Promise<void>
   deleteTransaction: (id: number) => Promise<void>
+  editTransaction: (data: CreateTransactionInput, id: number) => Promise<void>
 }
 
 export const TransactionsContext = createContext({} as TransactionContextType)
@@ -58,12 +63,7 @@ export function TransactionsProvider({ children }: TransactionsProviderProps) {
   }
 
   async function fetchTotalTransactions() {
-    const response = await api.get('/transactions', {
-      params: {
-        _sort: 'createdAt',
-        _order: 'desc',
-      },
-    })
+    const response = await api.get('/transactions')
 
     setTotalTransactions(response.data)
   }
@@ -88,18 +88,39 @@ export function TransactionsProvider({ children }: TransactionsProviderProps) {
     fetchTotalTransactions()
   }, [])
 
+  async function editTransaction(data: CreateTransactionInput, id: number) {
+    const { category, description, price, type } = data
+
+    await api.put(`/transactions/${id}`, {
+      description,
+      price,
+      category,
+      type,
+    })
+
+    const copyTransaction = [...transactions]
+    const transactionIndex = copyTransaction.findIndex((item) => item.id === id)
+
+    if (transactionIndex >= 0) {
+      copyTransaction[transactionIndex].category = data.category
+      copyTransaction[transactionIndex].description = data.description
+      copyTransaction[transactionIndex].price = data.price
+      copyTransaction[transactionIndex].type = data.type
+    }
+
+    setTransactions(copyTransaction)
+  }
+
   async function deleteTransaction(id: number) {
     setLoading(true)
 
     const deletedTransaction = transactions.filter(transaction => {
       return transaction.id !== id
     })
-    console.log(deletedTransaction)
     await api.delete(`/transactions/${id}`)
 
     setTransactions(deletedTransaction)
     fetchTotalTransactions()
-
     setLoading(false)
   }
 
@@ -111,6 +132,7 @@ export function TransactionsProvider({ children }: TransactionsProviderProps) {
         totalTransactions,
         fetchTransactions,
         createTransaction,
+        editTransaction,
         deleteTransaction
       }}
     >

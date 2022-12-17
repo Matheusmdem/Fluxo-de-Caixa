@@ -1,19 +1,21 @@
-import { Trash } from 'phosphor-react'
+import { Pencil, Trash } from 'phosphor-react'
 import { useContext } from 'react'
 import { Header } from '../../components/Header'
 import { Paginate } from '../../components/Paginate'
 import { SearchForm } from '../../components/SearchForm'
 import { Summary } from '../../components/Summary'
 import { TransactionsContext } from '../../contexts/TransactionsContext'
-import { dateFormatter, priceFormatter } from '../../utils/formatter'
 import * as AlertDialog from '@radix-ui/react-alert-dialog';
+import * as Dialog from '@radix-ui/react-dialog'
 import {
-  DeleteButton,
+  DeleteEditButton,
   PriceHighLight,
   TransactionsContainer,
   TransactionsTable,
 } from './styles'
 import { DeleteAlertDialog } from '../../components/DeleteAlertDialog'
+import { NewTransactionModal } from '../../components/NewTransactionModal'
+import { dateFormatter, priceFormatter } from '../../utils/formatter'
 
 
 
@@ -39,21 +41,33 @@ export function Transactions() {
                   </PriceHighLight>
                 </td>
                 <td>{transaction.category}</td>
-                <td>{dateFormatter.format(new Date(transaction.createdAt))}</td>
+                {/* <td>{dateFormatter.format(new Date(transaction.createdAt))}</td> */}
                 <td>
                   <AlertDialog.Root>
                     <AlertDialog.Trigger
                       asChild
                       disabled={loading}
                     >
-                      <DeleteButton>
+                      <DeleteEditButton variant='delete'>
                         <Trash size={20} />
-                      </DeleteButton>
+                      </DeleteEditButton>
                     </AlertDialog.Trigger>
                     <DeleteAlertDialog
-                      deleteId={transaction.id}
+                      onDelete={transaction.id}
                     />
                   </AlertDialog.Root>
+                </td>
+                <td>
+                  <Dialog.Root>
+                    <Dialog.Trigger asChild>
+                      <DeleteEditButton variant='edit'>
+                        <Pencil size={20} />
+                      </DeleteEditButton>
+                    </Dialog.Trigger>
+                    <NewTransactionModal
+                      onEditTransaction={transaction}
+                    />
+                  </Dialog.Root>
                 </td>
               </tr>
             ))}

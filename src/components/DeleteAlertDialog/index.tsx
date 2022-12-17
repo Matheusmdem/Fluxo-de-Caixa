@@ -4,16 +4,15 @@ import { TransactionsContext } from '../../contexts/TransactionsContext';
 import { Action, Cancel, Content, Description, Overlay } from './styles';
 
 interface DeleteTransaction {
-  deleteId: number
+  onDelete: number
 }
 
-export function DeleteAlertDialog(id: DeleteTransaction) {
+export function DeleteAlertDialog({ onDelete }: DeleteTransaction) {
   const { transactions, deleteTransaction } = useContext(TransactionsContext)
 
   function handleDeleteTransaction(id: number) {
     deleteTransaction(id)
   }
-
 
   return (
     <AlertDialog.Portal>
@@ -30,7 +29,7 @@ export function DeleteAlertDialog(id: DeleteTransaction) {
             Cancelar
           </Cancel>
           <Action
-            onClick={() => handleDeleteTransaction(id.deleteId)}
+            onClick={() => handleDeleteTransaction(onDelete)}
           >
             Deletar
           </Action>

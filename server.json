@@ -1,124 +1,12 @@
 {
   "transactions": [
     {
-      "id": 1,
-      "description": "Desenvolvimento de site",
-      "type": "income",
-      "category": "Venda",
-      "price": 10000,
-      "createdAt": "2022-12-07T17:06:26.795Z"
-    },
-    {
-      "id": 3,
-      "description": "Carro",
-      "type": "outcome",
-      "category": "Compra",
-      "price": 2500,
-      "createdAt": "2022-11-18T17:06:02.795Z"
-    },
-    {
-      "description": "Aplicativo",
-      "price": 4500,
-      "category": "Venda",
-      "type": "income",
-      "createdAt": "2022-12-08T22:03:18.767Z",
-      "id": 4
-    },
-    {
-      "id": 6,
-      "description": "Desenvolvimento de site",
-      "type": "income",
-      "category": "Venda",
-      "price": 10000,
-      "createdAt": "2022-12-07T17:06:26.795Z"
-    },
-    {
-      "id": 8,
-      "description": "Carro",
-      "type": "outcome",
-      "category": "Compra",
-      "price": 2500,
-      "createdAt": "2022-11-18T17:06:02.795Z"
-    },
-    {
-      "description": "Aplicativo",
-      "price": 4500,
-      "category": "Venda",
-      "type": "income",
-      "createdAt": "2022-12-08T22:03:18.767Z",
-      "id": 9
-    },
-    {
-      "id": 13,
-      "description": "Desenvolvimento de site",
-      "type": "income",
-      "category": "Venda",
-      "price": 10000,
-      "createdAt": "2022-12-07T17:06:26.795Z"
-    },
-    {
-      "description": "Aplicativo",
-      "price": 4500,
-      "category": "Venda",
-      "type": "income",
-      "createdAt": "2022-12-08T22:03:18.767Z",
-      "id": 16
-    },
-    {
-      "id": 18,
-      "description": "Desenvolvimento de site",
-      "type": "income",
-      "category": "Venda",
-      "price": 10000,
-      "createdAt": "2022-12-07T17:06:26.795Z"
-    },
-    {
-      "description": "Aplicativo",
-      "price": 4500,
-      "category": "Venda",
-      "type": "income",
-      "createdAt": "2022-12-08T22:03:18.767Z",
-      "id": 21
-    },
-    {
-      "description": "Aplicativo",
-      "price": 4500,
-      "category": "Venda",
-      "type": "income",
-      "createdAt": "2022-12-08T22:03:18.767Z",
-      "id": 24
-    },
-    {
-      "description": "Aplicativo",
-      "price": 4500,
-      "category": "Venda",
-      "type": "income",
-      "createdAt": "2022-12-08T22:03:18.767Z",
-      "id": 26
-    },
-    {
-      "description": "Hamburguer",
-      "price": 3500,
-      "category": "Alimentação",
-      "type": "outcome",
-      "createdAt": "2022-12-08T22:29:13.800Z",
-      "id": 27
-    },
-    {
       "id": 28,
       "description": "Desenvolvimento de site",
       "type": "income",
       "category": "Venda",
       "price": 10000,
       "createdAt": "2022-12-07T17:06:26.795Z"
-    },
-    {
-      "description": "Aplicativo",
-      "price": 4500,
-      "category": "Venda",
-      "type": "income",
-      "createdAt": "2022-12-08T22:03:18.767Z",
-      "id": 31
     },
     {
       "description": "Hamburguer",
@@ -134,103 +22,21 @@
       "category": "Venda",
       "type": "income",
       "createdAt": "2022-12-08T22:03:18.767Z",
-      "id": 34
-    },
-    {
-      "description": "Aplicativo",
-      "price": 4500,
-      "category": "Venda",
-      "type": "income",
-      "createdAt": "2022-12-08T22:03:18.767Z",
       "id": 41
     },
     {
-      "description": "Hamburguer",
-      "price": 3500,
-      "category": "Alimentação",
+      "description": "Moto",
+      "price": 1100,
+      "category": "Compra",
       "type": "outcome",
-      "createdAt": "2022-12-08T22:29:13.800Z",
-      "id": 42
-    },
-    {
-      "description": "Aplicativo",
-      "price": 4500,
-      "category": "Venda",
-      "type": "income",
-      "createdAt": "2022-12-08T22:03:18.767Z",
-      "id": 44
-    },
-    {
-      "description": "testando",
-      "price": 500,
-      "category": "teste",
-      "type": "income",
-      "createdAt": "2022-12-16T19:17:30.295Z",
-      "id": 45
-    },
-    {
-      "description": "ghjgh",
-      "price": 454,
-      "category": "jk",
-      "type": "outcome",
-      "createdAt": "2022-12-16T19:21:08.817Z",
       "id": 46
     },
     {
-      "description": "fe4wqf",
-      "price": 545,
-      "category": "bkjb",
+      "description": "Arroz",
+      "price": 150,
+      "category": "Alimentação",
       "type": "income",
-      "createdAt": "2022-12-16T19:21:14.097Z",
       "id": 47
-    },
-    {
-      "description": "fefwq",
-      "price": 5456,
-      "category": "fwqf",
-      "type": "outcome",
-      "createdAt": "2022-12-16T19:21:18.754Z",
-      "id": 48
-    },
-    {
-      "description": "fefe",
-      "price": 4545,
-      "category": "fmk",
-      "type": "income",
-      "createdAt": "2022-12-16T19:21:22.514Z",
-      "id": 49
-    },
-    {
-      "description": "fewwf",
-      "price": 1231,
-      "category": "fmeqwjk",
-      "type": "income",
-      "createdAt": "2022-12-16T19:21:26.441Z",
-      "id": 50
-    },
-    {
-      "description": "41f",
-      "price": 45456,
-      "category": "dwk",
-      "type": "income",
-      "createdAt": "2022-12-16T19:21:33.393Z",
-      "id": 51
-    },
-    {
-      "description": "ghwrb",
-      "price": 56456,
-      "category": "feqnj",
-      "type": "income",
-      "createdAt": "2022-12-16T19:22:01.777Z",
-      "id": 52
-    },
-    {
-      "description": "ghwajig",
-      "price": 41,
-      "category": "5wgfj",
-      "type": "income",
-      "createdAt": "2022-12-16T19:22:27.674Z",
-      "id": 54
     }
   ]
 }
